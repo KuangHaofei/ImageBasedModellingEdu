@@ -21,7 +21,17 @@
   cmake ..
   make -j 8
   ```
-## Task 1
+## Task 1-1
 
 - outputs of the code:
   ![task1-1](./imgs/task1-1.png)
+
+## Task 1-2
+
+- outputs of the code:
+  ![task1-2](./imgs/task1-2.png)
+
+## Task 1-3
+
+- outputs of the code:
+  ![task1-3](./imgs/task1-3.png)
