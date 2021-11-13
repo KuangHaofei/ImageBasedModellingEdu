@@ -36,7 +36,12 @@
 - outputs of the code:
   ![task1-3](./imgs/task1-3.png)
 
-## Task 1-3
+## Task 1-4
 
 - outputs of the code:
   ![task1-4](./imgs/task1-4.png)
+
+## Task 1-5
+
+- outputs of the code:
+  ![task1-5](./imgs/task1-5.png)
