@@ -223,8 +223,8 @@ feature_set_matching (core::ByteImage::Ptr image1, core::ByteImage::Ptr image2)
 
     core::ByteImage::Ptr match_image = visualize_matching(
         matching, image1, image2, feat1.positions, feat2.positions);
-    // std::string output_filename = "./tmp/matching_featureset.png";
-    std::string output_filename = "./matching_featureset.png";
+    std::string base_path = "/home/ipb-hk/Desktop/courses/SfM/ImageBasedModellingEdu/";
+    std::string output_filename = base_path + "tmp/matching_featureset.png";
     std::cout << "Saving visualization to " << output_filename << std::endl;
     core::image::save_file(match_image, output_filename);
 }
