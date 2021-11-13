@@ -80,11 +80,12 @@
 
 ## Task 1-6
 
+- change the root path with the absolute path of your project directory at [line 226 of `task1-6_test_matching.cc`](./task1-6_test_matching.cc#L226)
+
 - run the code:
   ```shell
   cd ImageBasedModellingEdu/build/examples/task1
   ./task6_test_feature_matching {project_path}/examples/data/kxm1.jpg {project_path}/examples/data/kxm2.jpg
-  ./task6_test_feature_matching /home/ipb-hk/Desktop/courses/SfM/ImageBasedModellingEdu/examples/data/kxm1.jpg /home/ipb-hk/Desktop/courses/SfM/ImageBasedModellingEdu/examples/data/kxm2.jpg
   ```
 
 - Results:
@@ -101,3 +102,19 @@
     
     - matching results:<br/>
       ![matching_lowe-ratio](./imgs/matching_featureset_lowe-ratio.png)
+
+## Task 1-7
+
+- change the root path with the absolute path of your project directory at [line 91 of `task1-7_test_features.cc`](./task1-7_test_features.cc#L91)
+
+- run the code:
+  ```shell
+  cd ImageBasedModellingEdu/build/examples/task1
+  ./task7_test_features {project_path}/examples/data/kxm1.jpg
+  ```
+
+- output:<br/>
+  ![task1-7](./imgs/task1-7.png)
+
+- results of SIFT feature detection:<br/>
+  ![sift](./imgs/kxm1.sift.png)
