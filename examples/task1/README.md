@@ -45,3 +45,20 @@
 
 - outputs of the code:
   ![task1-5](./imgs/task1-5.png)
+
+## Task 1-6
+
+- Results:
+  - Nearest Neighbor
+    - output:
+      ![task1-6_nn](./imgs/task1-6_nn.png)
+    
+    - matching results:
+      ![matching_nn](./imgs/matching_featureset_nn.png)
+    
+  - Lowe's Ratio
+    - output:
+      ![task1-6_lowe-ratio](./imgs/task1-6_lowe-ratio.png)
+    
+    - matching results:
+      ![matching_lowe-ratio](./imgs/matching_featureset_lowe-ratio.png)
