@@ -200,9 +200,9 @@ int main(int argc, char *argv[]){
 
     /** 加载归一化后的匹配对 */
     sfm::Correspondences2D2D corr_all;
-    std::string data_path = "/home/ipb-hk/Desktop/courses/SfM/ImageBasedModellingEdu/examples/task1/correspondences.txt";
     // std::ifstream in("./examples/task1/correspondences.txt");
-    std::ifstream in(data_path);
+    std::string base_path = "/home/ipb-hk/Desktop/courses/SfM/ImageBasedModellingEdu/";
+    std::ifstream in(base_path + "examples/task1/correspondences.txt");
     assert(in.is_open());
 
     std::string line, word;
