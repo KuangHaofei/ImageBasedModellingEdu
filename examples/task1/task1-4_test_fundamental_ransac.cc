@@ -12,6 +12,8 @@
 #include <fstream>
 #include <sstream>
 #include <set>
+#include <cassert>
+#include <filesystem>
 #include <util/system.h>
 #include <sfm/ransac_fundamental.h>
 #include "math/functions.h"
@@ -34,13 +36,13 @@ typedef math::Matrix<double, 3, 3> FundamentalMatrix;
  * 需要采样1176次从而保证RANSAC的成功率不低于0.99.
  * @return
  */
-int  calc_ransac_iterations (double p,
-                           int K,
-                           double z = 0.99){
-
+int  calc_ransac_iterations (double p, int K, double z = 0.99){
     /** TODO HERE
      * Coding here**/
-    return 0;
+    double prob_all_good = math::fastpow(p, K);
+    double num_iterations = std::log(1.0 - z) / std::log(1.0 - prob_all_good);
+
+    return static_cast<int>(math::round(num_iterations));
 
 
     /** Reference
@@ -77,7 +79,7 @@ double  calc_sampson_distance (FundamentalMatrix const& F, sfm::Correspondence2D
     return p2_F_p1 / sum;
 }
 /**
- * \description 8点发估计相机基础矩阵
+ * \description 8点法估计相机基础矩阵
  * @param pset1 -- 第一个视角的特征点
  * @param pset2 -- 第二个视角的特征点
  * @return 估计的基础矩阵
@@ -164,8 +166,8 @@ void calc_fundamental_least_squares(sfm::Correspondences2D2D const & matches, Fu
  * @param F
  * @return
  */
-std::vector<int> find_inliers(sfm::Correspondences2D2D const & matches
-    ,FundamentalMatrix const & F, const double & thresh){
+std::vector<int> find_inliers(sfm::Correspondences2D2D const & matches,
+                              FundamentalMatrix const & F, const double & thresh){
     const double squared_thresh = thresh* thresh;
 
     std::vector<int> inliers;
@@ -174,6 +176,12 @@ std::vector<int> find_inliers(sfm::Correspondences2D2D const & matches
      * TODO HERE
      *
      * Coding here **/
+    for(int i=0; i< matches.size(); i++){
+        double error = calc_sampson_distance(F, matches[i]);
+        if(error< squared_thresh){
+            inliers.push_back(i);
+        }
+    }
 
     /** Reference
     for(int i=0; i< matches.size(); i++){
@@ -192,7 +200,9 @@ int main(int argc, char *argv[]){
 
     /** 加载归一化后的匹配对 */
     sfm::Correspondences2D2D corr_all;
-    std::ifstream in("./examples/task1/correspondences.txt");
+    std::string data_path = "/home/ipb-hk/Desktop/courses/SfM/ImageBasedModellingEdu/examples/task1/correspondences.txt";
+    // std::ifstream in("./examples/task1/correspondences.txt");
+    std::ifstream in(data_path);
     assert(in.is_open());
 
     std::string line, word;
